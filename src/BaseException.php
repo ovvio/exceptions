@@ -5,19 +5,18 @@ declare(strict_types=1);
 namespace Ovvio\Exceptions;
 
 use Exception;
+use Ovvio\Exceptions\Specification\ExceptionsSpecification;
 use Throwable;
 
 class BaseException extends Exception
 {
     public function __construct(
-        null|string $message = '',
-        null|int $code = Exceptions::EXCEPTION_CODE_DEFAULT,
-        Throwable $previous = null,
+        string $message = 'Exception',
+        int $code = Exceptions::EXCEPTION_CODE_DEFAULT,
+        null|Throwable $previous = null,
     ) {
-        parent::__construct(
-            message: $message ?? '',
-            code: $code ?? Exceptions::EXCEPTION_CODE_DEFAULT,
-            previous: $previous,
-        );
+        ExceptionsSpecification::isValidExceptionCode(code: $code);
+
+        parent::__construct(message: $message, code: $code, previous: $previous);
     }
 }
