@@ -15,7 +15,7 @@ final class Exceptions
      * @var array<int, string>
      */
     public const array CODES = [
-        self::EXCEPTION_CODE_DEFAULT => 'Ошибка',
+        self::EXCEPTION_CODE_DEFAULT => 'Exception',
         ...HttpResponseExceptions::CODES,
     ];
 }
